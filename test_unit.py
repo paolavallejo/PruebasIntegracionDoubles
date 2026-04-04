@@ -90,3 +90,7 @@ def test_create_order_invalid_amount():
         assert False, "Se esperaba ValueError por monto inválido"
     except ValueError:
         pass
+
+class StubUserRepository:
+    def get_user_email(self, user_id):
+        return "test@stub.com"
