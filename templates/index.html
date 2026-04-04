@@ -1,0 +1,39 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order App</title>
+</head>
+<body>
+<h1>Create Order</h1>
+
+<form method="post">
+    User ID:<br>
+    <input name="user_id" type="number" required><br><br>
+
+    Amount:<br>
+    <input name="amount" type="number" required><br><br>
+
+    <button type="submit">Create Order</button>
+</form>
+
+{% if result %}
+<h3>✅ Order Created</h3>
+<p>{{ result.user_email }} - ${{ result.amount }}</p>
+{% endif %}
+
+{% if error %}
+<p style="color:red">{{ error }}</p>
+{% endif %}
+
+<hr>
+
+<h2>📦 Orders</h2>
+<ul>
+{% for order in orders %}
+    <li>{{ order.user_email }} | ${{ order.amount }} | {{ order.status }}</li>
+{% endfor %}
+</ul>
+
+</body>
+</html>
