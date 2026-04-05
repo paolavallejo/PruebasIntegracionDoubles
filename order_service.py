@@ -2,12 +2,16 @@
 from models import Order
 
 def create_order(user_id, amount, notifier, logger, db, user_repository):
-    email = user_repository.get_user_email(user_id)
+
+    # TODO 1: obtener el email desde el repositorio
+
+
 
     logger.log(f"Creating order for {email}")
 
-    if amount <= 0:
-        raise ValueError("Invalid amount")
+    # TODO 2: validar que amount sea positivo
+
+
 
     order = Order(
         user_email=email,
@@ -15,9 +19,9 @@ def create_order(user_id, amount, notifier, logger, db, user_repository):
         status="CREATED"
     )
 
-    db.add(order)
-    db.commit()
+    # TODO 3: persistir la orden
+
+
 
     notifier.send(email, "Order created")
-
     return order
