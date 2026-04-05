@@ -25,6 +25,6 @@ def test_create_order_with_real_api():
     )
 
     # TODO: completar el estado esperado
-    assert order.status == "________"
+    assert order.status == "CREATED"
 
     db.close()
