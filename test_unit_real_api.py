@@ -6,11 +6,13 @@ Base.metadata.create_all(bind=engine)
 
 class DummyLogger:
     def log(self, msg):
-        pass
+        # TODO: implementar un logger que no haga nada
+        __________
 
 class NullNotifier:
     def send(self, to, message):
-        pass
+        # TODO: implementar un notifier que no haga nada
+        __________
 
 def test_create_order_with_real_api():
     db = SessionLocal()
@@ -25,6 +27,6 @@ def test_create_order_with_real_api():
     )
 
     # TODO: completar el estado esperado
-    assert order.status == "CREATED"
+    assert order.status == "________"
 
     db.close()
