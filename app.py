@@ -3,15 +3,14 @@ from flask import Flask, render_template, request
 from database import Base, engine, SessionLocal
 from order_service import create_order
 from models import Order
-#from user_repository import JsonPlaceholderUserRepository
-from user_repository import FakeUserRepository
+from user_repository import JsonPlaceholderUserRepository
 
 app = Flask(__name__)
 Base.metadata.create_all(bind=engine)
 
 class WebNotifier:
     def send(self, to, message):
-        print(f"[EMAIL] {to} - {message}")
+        print(f"[EMAIL] {to}: {message}")
 
 class WebLogger:
     def log(self, msg):
@@ -20,9 +19,7 @@ class WebLogger:
 @app.route("/", methods=["GET", "POST"])
 def index():
     db = SessionLocal()
-    #repo = JsonPlaceholderUserRepository()
-    repo = FakeUserRepository()
-
+    repo = JsonPlaceholderUserRepository()
     result = None
     error = None
 
