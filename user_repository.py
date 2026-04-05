@@ -21,4 +21,4 @@ class JsonPlaceholderUserRepository:
 class FakeUserRepository:
     def get_user_email(self, user_id):
         # TODO: retornar un email ficticio
-        __________________________________
+        return f"user{user_id}@fake.local"
