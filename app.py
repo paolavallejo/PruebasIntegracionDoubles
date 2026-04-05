@@ -3,7 +3,8 @@ from flask import Flask, render_template, request
 from database import Base, engine, SessionLocal
 from order_service import create_order
 from models import Order
-from user_repository import JsonPlaceholderUserRepository
+#from user_repository import JsonPlaceholderUserRepository
+from user_repository import FakeUserRepository
 
 app = Flask(__name__)
 Base.metadata.create_all(bind=engine)
@@ -19,7 +20,8 @@ class WebLogger:
 @app.route("/", methods=["GET", "POST"])
 def index():
     db = SessionLocal()
-    repo = JsonPlaceholderUserRepository()
+    #repo = JsonPlaceholderUserRepository()
+    repo = FakeUserRepository()
     result = None
     error = None
 
